@@ -54,7 +54,7 @@ myconnection con = new myconnection();
         jLabel7 = new javax.swing.JLabel();
         Signin = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        signup1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -101,9 +101,14 @@ myconnection con = new myconnection();
         jLabel8.setForeground(new java.awt.Color(123, 123, 123));
         jLabel8.setText("Bạn không có tài khoản?");
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(63, 118, 215));
-        jLabel9.setText("Đăng ký");
+        signup1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        signup1.setForeground(new java.awt.Color(63, 118, 215));
+        signup1.setText("Đăng ký");
+        signup1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                signup1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -121,7 +126,7 @@ myconnection con = new myconnection();
                         .addGap(60, 60, 60)
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel9))
+                        .addComponent(signup1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(128, 128, 128)
                         .addComponent(jLabel4))
@@ -160,7 +165,7 @@ myconnection con = new myconnection();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jLabel9))
+                    .addComponent(signup1))
                 .addGap(0, 57, Short.MAX_VALUE))
         );
 
@@ -205,6 +210,12 @@ myconnection con = new myconnection();
         JOptionPane.showMessageDialog(this, "Lỗi: " + e.getMessage());
     }
     }//GEN-LAST:event_SigninActionPerformed
+
+    private void signup1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signup1MouseClicked
+        this.dispose();
+        signup signup1 = new signup();
+        signup1.setVisible(true);
+    }//GEN-LAST:event_signup1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -251,9 +262,9 @@ myconnection con = new myconnection();
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField password;
+    private javax.swing.JLabel signup1;
     private javax.swing.JTextField user;
     // End of variables declaration//GEN-END:variables
 }

@@ -59,7 +59,7 @@ myconnection con = new myconnection();
         jRadioButton1 = new javax.swing.JRadioButton();
         signup = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        signin = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         iduser = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -68,39 +68,53 @@ myconnection con = new myconnection();
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         user.setBackground(new java.awt.Color(255, 255, 255));
+        user.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/herbal (1).png"))); // NOI18N
         jLabel1.setText("Medicine Flare");
+        user.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Đăng Ký");
+        user.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Tên đăng nhập");
+        user.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 147, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Mật khẩu");
+        user.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 215, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Nhập lại mật khẩu");
+        user.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 277, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Email");
+        user.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 339, 37, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Số điện thoại");
+        user.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 401, -1, -1));
+        user.add(user1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 173, 290, 30));
+        user.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 365, 290, 30));
 
         Password.setMinimumSize(new java.awt.Dimension(64, 30));
+        user.add(Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 241, 290, 30));
+        user.add(ResPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 303, 290, 30));
+        user.add(sdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 427, 290, 30));
 
         jRadioButton1.setText("Chấp nhận điều khoản của công ty");
+        user.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, -1, -1));
 
         signup.setBackground(new java.awt.Color(233, 243, 254));
         signup.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -111,105 +125,39 @@ myconnection con = new myconnection();
                 signupActionPerformed(evt);
             }
         });
+        user.add(signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, 290, 40));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(123, 123, 123));
         jLabel9.setText("Bạn đã có tài khoản?");
+        user.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 540, -1, -1));
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(63, 118, 215));
-        jLabel10.setText("Đăng nhập");
+        signin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        signin.setForeground(new java.awt.Color(63, 118, 215));
+        signin.setText("Đăng nhập");
+        signin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                signinMouseClicked(evt);
+            }
+        });
+        user.add(signin, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 540, -1, -1));
 
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("ID");
+        user.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 20, 20));
 
         iduser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 iduserActionPerformed(evt);
             }
         });
+        user.add(iduser, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 71, -1));
 
-        javax.swing.GroupLayout userLayout = new javax.swing.GroupLayout(user);
-        user.setLayout(userLayout);
-        userLayout.setHorizontalGroup(
-            userLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(userLayout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(userLayout.createSequentialGroup()
-                .addGroup(userLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(userLayout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel10))
-                    .addGroup(userLayout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addGroup(userLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(userLayout.createSequentialGroup()
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(62, 62, 62)
-                                .addComponent(jLabel3))
-                            .addGroup(userLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel4)
-                                .addComponent(user1, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
-                                .addComponent(jLabel5)
-                                .addComponent(Password, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel6)
-                                .addComponent(ResPassword)
-                                .addComponent(jLabel8)
-                                .addComponent(email)
-                                .addComponent(sdt)
-                                .addComponent(jRadioButton1)
-                                .addComponent(signup, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(iduser, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(37, Short.MAX_VALUE))
-        );
-        userLayout.setVerticalGroup(
-            userLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(userLayout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(userLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel11))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(iduser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(user1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ResPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sdt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(signup, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addGroup(userLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10))
-                .addGap(0, 8, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 570));
+        getContentPane().add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 580));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/backgroup.jpg"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, -1, 570));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -279,6 +227,12 @@ myconnection con = new myconnection();
         // TODO add your handling code here:
     }//GEN-LAST:event_iduserActionPerformed
 
+    private void signinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signinMouseClicked
+        this.dispose();
+        Login login1 = new Login();
+        login1.setVisible(true);
+    }//GEN-LAST:event_signinMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -320,7 +274,6 @@ myconnection con = new myconnection();
     private javax.swing.JTextField email;
     private javax.swing.JTextField iduser;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -332,6 +285,7 @@ myconnection con = new myconnection();
     private javax.swing.JLabel jLabel9;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JTextField sdt;
+    private javax.swing.JLabel signin;
     private javax.swing.JButton signup;
     private javax.swing.JPanel user;
     private javax.swing.JTextField user1;
