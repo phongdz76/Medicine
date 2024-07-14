@@ -157,7 +157,7 @@ myconnection con = new myconnection();
         getContentPane().add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 580));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/backgroup.jpg"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, -10, -1, 590));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
