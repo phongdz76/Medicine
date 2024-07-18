@@ -8,6 +8,7 @@ package user;
  *
  * @author nguye
  */ 
+import admin.admin;
 import com.mysql.cj.jdbc.Blob;
 import com.mysql.cj.jdbc.result.ResultSetFactory;
 import com.sun.jdi.connect.spi.Connection;
@@ -51,8 +52,8 @@ myconnection con = new myconnection();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         password = new javax.swing.JPasswordField();
-        jLabel7 = new javax.swing.JLabel();
         Signin = new javax.swing.JButton();
+        jCheckBox1 = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -83,8 +84,6 @@ myconnection con = new myconnection();
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Mật khẩu");
 
-        jLabel7.setText("Quên mật khẩu");
-
         Signin.setBackground(new java.awt.Color(233, 243, 254));
         Signin.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         Signin.setForeground(new java.awt.Color(0, 163, 255));
@@ -94,6 +93,10 @@ myconnection con = new myconnection();
                 SigninActionPerformed(evt);
             }
         });
+
+        jCheckBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jCheckBox1.setForeground(new java.awt.Color(0, 0, 0));
+        jCheckBox1.setText("Nhớ mật khẩu");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -105,22 +108,23 @@ myconnection con = new myconnection();
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(121, 121, 121)
+                        .addComponent(jLabel4))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(31, 31, 31)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel7)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(user, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(Signin, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(121, 121, 121)
-                        .addComponent(jLabel4)))
-                .addContainerGap(42, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(Signin, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(user, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jCheckBox1))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,13 +140,16 @@ myconnection con = new myconnection();
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(13, 13, 13)
-                .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Signin)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addGap(0, 70, Short.MAX_VALUE))
+                .addComponent(jCheckBox1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(jLabel5))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(Signin)))
+                .addGap(0, 63, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 440));
@@ -158,12 +165,21 @@ myconnection con = new myconnection();
     }//GEN-LAST:event_userActionPerformed
 
     private void SigninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SigninActionPerformed
-          String ten = user.getText();
-         String pass = password.getText();
+           String ten = user.getText();
+    String pass = password.getText();
     
     try {
+        // Kiểm tra admin
+        if (ten.equals("minhchi521") && pass.equals("123456")) {
+            JOptionPane.showMessageDialog(this, "Xin chào Admin");
+            this.dispose(); // Đóng MainFrame hiện tại
+            admin productFrame = new admin();
+            productFrame.setVisible(true); // Mở ProductFrame
+            return;
+        }
+        
         // Kiểm tra người dùng thông thường
-        String sql = "SELECT * FROM user WHERE user = ? AND password = ?";
+        String sql = "SELECT * FROM user WHERE username = ? AND password = ?";
         PreparedStatement ps = con.getconnect().prepareStatement(sql);
         ps.setString(1, ten);
         ps.setString(2, pass);
@@ -171,9 +187,11 @@ myconnection con = new myconnection();
         ResultSet rs = ps.executeQuery();
         
         if (rs.next()) {
+            String userid = rs.getString("id"); // Giả sử cột ID trong bảng user là "id"
+            String username = rs.getString("username");
             JOptionPane.showMessageDialog(this, "Đăng nhập thành công!");
             this.dispose(); // Đóng MainFrame hiện tại
-            UserDashboard productFrame2 = new  UserDashboard();
+            UserDashboard productFrame2 = new UserDashboard();
             productFrame2.setVisible(true); // Mở ProductFrame
         } else {
             JOptionPane.showMessageDialog(this, "Tên đăng nhập hoặc mật khẩu không đúng!");
@@ -224,13 +242,13 @@ myconnection con = new myconnection();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Signin;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField password;
     private javax.swing.JTextField user;
