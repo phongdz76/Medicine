@@ -4,6 +4,7 @@
  */
 package admin;
 
+import com.mysql.cj.jdbc.Blob;
 import connection.myconnection;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -16,6 +17,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import user.Login;
+import java.sql.ResultSet;
 
 /**
  *
@@ -62,8 +64,6 @@ String path2 = null;
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         loai = new javax.swing.JComboBox<>();
-        jLabel12 = new javax.swing.JLabel();
-        sl = new javax.swing.JTextField();
         ncc = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
         tt = new javax.swing.JTextField();
@@ -73,7 +73,7 @@ String path2 = null;
         addproduct = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         image = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        back = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -138,10 +138,6 @@ String path2 = null;
 
         loai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Thuốc giảm đau", "Thuốc kháng viêm giảm đau", "Thuốc trị đau dạ dày", "Thuốc chống dị ứng", "Thuốc trị tiêu chảy", "Thuốc ngủ", "Thuốc ho", "Thuốc nhỏ mắt và thuốc nhỏ tai" }));
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel12.setText("Số lượng");
-
         ncc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nhà thuốc Long Châu", "Nhà thuốc Pharmacity", "Nhà thuốc An Khang" }));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -188,7 +184,12 @@ String path2 = null;
                 .addGap(17, 17, 17))
         );
 
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/back.png"))); // NOI18N
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/back.png"))); // NOI18N
+        back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -198,7 +199,7 @@ String path2 = null;
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
-                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(38, 38, 38)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -218,14 +219,12 @@ String path2 = null;
                     .addComponent(jLabel8)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10)
-                    .addComponent(jLabel12)
                     .addComponent(jLabel13)
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tt, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(gia, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sl, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ncc, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(loai, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tensp, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -234,16 +233,14 @@ String path2 = null;
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel14)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(gia, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel15))
+                            .addComponent(back))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
@@ -260,33 +257,25 @@ String path2 = null;
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jLabel7)
                                     .addComponent(masp, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(29, 29, 29)
-                                        .addComponent(tensp, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(26, 26, 26)
-                                        .addComponent(loai, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(39, 39, 39)
-                                        .addComponent(jLabel8)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel9)))
-                                .addGap(32, 32, 32)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(tensp, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel8))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(loai, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel9))
+                                .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(ncc, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel10))
-                                .addGap(32, 32, 32)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel12)
-                                    .addComponent(sl, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(24, 24, 24)
+                                .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(tt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel13))
-                                .addGap(2, 2, 2)))
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel14)))
-                .addGap(24, 24, 24))
+                                    .addComponent(jLabel13))))
+                        .addGap(22, 22, 22)
+                        .addComponent(gia, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -353,7 +342,35 @@ String path2 = null;
           e.printStackTrace();
       }                 
     }//GEN-LAST:event_addimageActionPerformed
-
+public void edit(){
+        ResultSet rs = null;
+        String sql = "select * from thuoc where masanpham=?";
+        try {
+            PreparedStatement ps = con.getconnect().prepareStatement(sql);
+            ps.setString(1, this.idproduct2);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                String ma = rs.getString(1);
+                String ten = rs.getString(2);
+                String loai1 = rs.getString(3);
+                String sl1 = rs.getString(4);
+                String trangthai1 = rs.getString(5);
+                String gtt = rs.getString(6);
+                Blob img = (Blob) rs.getBlob(7);
+                byte[] bytea = img.getBytes(1, (int) img.length());
+                ImageIcon icon = new ImageIcon(bytea);
+                masp.setText(ma);
+                tensp.setText(ten);
+                loai.setText(loai1); 
+                gia.setText(gtt);
+                tt.setText(trangthai1);
+                sl.setText(sl1);
+                image.setIcon(icon);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+   }
     private void addproductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addproductActionPerformed
         try{
             String ma = masp.getText();
@@ -386,6 +403,12 @@ String path2 = null;
         Login login = new Login();
          login.setVisible(true);
     }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
+        this.dispose();
+        admin admin = new admin();
+        admin.setVisible(true);
+    }//GEN-LAST:event_backMouseClicked
 
     /**
      * @param args the command line arguments
@@ -425,15 +448,14 @@ String path2 = null;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addimage;
     private javax.swing.JButton addproduct;
+    private javax.swing.JLabel back;
     private javax.swing.JTextField gia;
     private javax.swing.JLabel image;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -448,7 +470,6 @@ String path2 = null;
     private javax.swing.JComboBox<String> loai;
     private javax.swing.JTextField masp;
     private javax.swing.JComboBox<String> ncc;
-    private javax.swing.JTextField sl;
     private javax.swing.JTextField tensp;
     private javax.swing.JTextField tt;
     // End of variables declaration//GEN-END:variables

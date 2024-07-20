@@ -179,7 +179,7 @@ myconnection con = new myconnection();
         }
         
         // Kiểm tra người dùng thông thường
-        String sql = "SELECT * FROM user WHERE username = ? AND password = ?";
+        String sql = "SELECT * FROM user WHERE user = ? AND password = ?";
         PreparedStatement ps = con.getconnect().prepareStatement(sql);
         ps.setString(1, ten);
         ps.setString(2, pass);
@@ -187,8 +187,7 @@ myconnection con = new myconnection();
         ResultSet rs = ps.executeQuery();
         
         if (rs.next()) {
-            String userid = rs.getString("id"); // Giả sử cột ID trong bảng user là "id"
-            String username = rs.getString("username");
+          
             JOptionPane.showMessageDialog(this, "Đăng nhập thành công!");
             this.dispose(); // Đóng MainFrame hiện tại
             UserDashboard productFrame2 = new UserDashboard();
