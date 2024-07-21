@@ -420,7 +420,7 @@ public class admin extends javax.swing.JFrame {
     }//GEN-LAST:event_addActionPerformed
 
     private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
-        String sql="Select * from product where masp=? ";
+        String sql="Select * from thuoc where masanpham=? ";
         String find1 = textfind.getText();
         ResultSet rs=null;
         try{
@@ -428,7 +428,7 @@ public class admin extends javax.swing.JFrame {
           ps.setString(1, find1);
           rs = ps.executeQuery();
          if (rs.next()) {
-          String idproduct2 = rs.getString("masp");
+          String idproduct2 = rs.getString("masanpham");
           this.dispose();
           them edit = new them( idproduct2);
           edit.setVisible(true);

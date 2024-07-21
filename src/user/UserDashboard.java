@@ -4,19 +4,30 @@
  */
 package user;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
+import connection.myconnection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
+import user.Login;
 
 /**
  *
  * @author nguye
  */
 public class UserDashboard extends javax.swing.JFrame {
+     myconnection con = new myconnection();
 
     /**
      * Creates new form UserDashboard
      */
     public UserDashboard() {
         initComponents();
+        Product();
     }
 
     /**
@@ -41,7 +52,7 @@ public class UserDashboard extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        data = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -138,7 +149,7 @@ public class UserDashboard extends javax.swing.JFrame {
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Tìm kiếm");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        data.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -149,7 +160,7 @@ public class UserDashboard extends javax.swing.JFrame {
                 "Mã sản phẩm", "Tên thuốc", "Loại thuốc", "Nhà cung cấp", "Số lượng", "Trạng thái", "Giá", "Hình ảnh"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(data);
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(0, 0, 0));
@@ -240,7 +251,24 @@ public class UserDashboard extends javax.swing.JFrame {
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel5MouseClicked
-
+  public void Product(){
+    ResultSet rs =null;
+    try{
+        String sql ="select * from thuoc";
+        PreparedStatement ps = con.getconnect().prepareStatement(sql);
+        rs = ps.executeQuery();
+        data.setModel(DbUtils.resultSetToTableModel(rs));
+        data.getColumnModel().getColumn(0).setPreferredWidth(500);
+        data.getColumnModel().getColumn(1).setPreferredWidth(500);
+        data.getColumnModel().getColumn(2).setPreferredWidth(500);
+        data.getColumnModel().getColumn(3).setPreferredWidth(500);
+        data.getColumnModel().getColumn(4).setPreferredWidth(500);
+        data.getColumnModel().getColumn(5).setPreferredWidth(500);
+        
+    }catch(Exception e){
+        e.printStackTrace();
+    }
+}
     /**
      * @param args the command line arguments
      */
@@ -277,6 +305,7 @@ public class UserDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable data;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -290,7 +319,6 @@ public class UserDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

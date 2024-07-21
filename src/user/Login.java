@@ -170,7 +170,7 @@ myconnection con = new myconnection();
     
     try {
         // Kiểm tra admin
-        if (ten.equals("minhchi521") && pass.equals("123456")) {
+        if (ten.equals("thanhphong") && pass.equals("123456")) {
             JOptionPane.showMessageDialog(this, "Xin chào Admin");
             this.dispose(); // Đóng MainFrame hiện tại
             admin productFrame = new admin();
