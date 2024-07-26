@@ -202,7 +202,7 @@ public class admin extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("jLabel9");
+        jLabel9.setText("thanhphong");
 
         jPanel4.setBackground(new java.awt.Color(217, 217, 217));
 
@@ -357,8 +357,8 @@ public class admin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(115, 115, 115)
+                .addComponent(jLabel9)
+                .addGap(99, 99, 99)
                 .addComponent(jLabel2)
                 .addGap(43, 43, 43))
         );

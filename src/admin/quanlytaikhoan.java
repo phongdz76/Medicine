@@ -85,7 +85,7 @@ myconnection con = new myconnection();
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel11.setText("jLabel9");
+        jLabel11.setText("thanhphong");
 
         jPanel4.setBackground(new java.awt.Color(217, 217, 217));
 
@@ -315,11 +315,11 @@ myconnection con = new myconnection();
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 231, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel11)
-                .addGap(136, 136, 136)
+                .addGap(118, 118, 118)
                 .addComponent(jLabel2)
                 .addGap(43, 43, 43))
             .addGroup(jPanel1Layout.createSequentialGroup()
