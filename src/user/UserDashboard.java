@@ -22,13 +22,21 @@ import user.Login;
  */
 public class UserDashboard extends javax.swing.JFrame {
      myconnection con = new myconnection();
+    private String ten2;
 
     /**
      * Creates new form UserDashboard
-     */
+     */ public UserDashboard(String ten2) {
+         this.ten2 = ten2;
+        
+        initComponents();
+        Product();
+       tenusermain.setText(ten2);
+    }
     public UserDashboard() {
         initComponents();
         Product();
+        tenusermain.setText(ten2);
     }
 
     /**
@@ -53,13 +61,14 @@ public class UserDashboard extends javax.swing.JFrame {
         gh = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        find = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         datathuocuser = new javax.swing.JTable();
         buy = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         tenuser = new javax.swing.JLabel();
+        tenusermain = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -192,9 +201,14 @@ public class UserDashboard extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Tìm kiếm");
+        find.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        find.setForeground(new java.awt.Color(0, 0, 0));
+        find.setText("Tìm kiếm");
+        find.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                findActionPerformed(evt);
+            }
+        });
 
         datathuocuser.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -240,7 +254,7 @@ public class UserDashboard extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton1)
+                                .addComponent(find)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton2))
                             .addComponent(jLabel4))
@@ -255,7 +269,7 @@ public class UserDashboard extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1)
+                    .addComponent(find)
                     .addComponent(jButton2))
                 .addGap(21, 21, 21)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -266,6 +280,8 @@ public class UserDashboard extends javax.swing.JFrame {
 
         tenuser.setForeground(new java.awt.Color(217, 217, 217));
         tenuser.setText("jLabel6");
+
+        tenusermain.setText("jLabel5");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -279,7 +295,9 @@ public class UserDashboard extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
+                        .addGap(61, 61, 61)
+                        .addComponent(tenusermain, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tenuser, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(114, 114, 114)
                         .addComponent(jLabel2)
@@ -295,7 +313,8 @@ public class UserDashboard extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jLabel3)
                     .addComponent(jLabel2)
-                    .addComponent(tenuser))
+                    .addComponent(tenuser)
+                    .addComponent(tenusermain))
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -336,7 +355,7 @@ public class UserDashboard extends javax.swing.JFrame {
 
     private void buyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyActionPerformed
       ResultSet rs = null;
-        String sql = "select tenthuoc,gia FROM thuoc WHERE masanpham = ?";
+        String sql = "select * FROM thuoc WHERE masanpham = ?";
         try {
             int selectedRow = datathuocuser.getSelectedRow();
             if (selectedRow == -1) {
@@ -350,9 +369,15 @@ public class UserDashboard extends javax.swing.JFrame {
             if(rs.next()){
                 String ten = rs.getString("tenthuoc");
                 int gia1=rs.getInt("gia");
+                String trangthai1=rs.getString("trangthai");
+               
+                if ("còn".equalsIgnoreCase(trangthai1)) {
                 this.dispose();
-                Giohang2 ha = new Giohang2(ten,gia1);
+                Giohang2 ha = new Giohang2(ten,gia1,ten2);
                 ha.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this, "Sản phẩm này không có sẵn để bán.");
+            }
             }
            
         } catch(Exception e) {
@@ -369,6 +394,25 @@ public class UserDashboard extends javax.swing.JFrame {
     private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
         
     }//GEN-LAST:event_jPanel6MouseClicked
+
+    private void findActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findActionPerformed
+           ResultSet rs = null;
+    String sql = "SELECT * FROM thuoc WHERE tenthuoc LIKE ?";
+    String tensp = find.getText();
+    try {
+        PreparedStatement ps = con.getconnect().prepareStatement(sql);
+        ps.setString(1, "%" + tensp + "%");
+        rs = ps.executeQuery();
+        datathuocuser.setModel(DbUtils.resultSetToTableModel(rs));
+        
+        for (int i = 0; i < datathuocuser.getColumnCount(); i++) {
+            datathuocuser.getColumnModel().getColumn(i).setPreferredWidth(500);
+        }
+        
+    } catch(Exception e) {
+        e.printStackTrace();
+    }  // TODO add your handling code here:
+    }//GEN-LAST:event_findActionPerformed
   public void Product(){
     ResultSet rs =null;
     try{
@@ -426,8 +470,8 @@ public class UserDashboard extends javax.swing.JFrame {
     private javax.swing.JButton buy;
     private javax.swing.JTable datathuocuser;
     private javax.swing.JLabel dt;
+    private javax.swing.JButton find;
     private javax.swing.JLabel gh;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -443,5 +487,6 @@ public class UserDashboard extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel qlt1;
     private javax.swing.JLabel tenuser;
+    private javax.swing.JLabel tenusermain;
     // End of variables declaration//GEN-END:variables
 }

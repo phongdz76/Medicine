@@ -318,7 +318,7 @@ public class doanhthu extends javax.swing.JFrame {
                         .addGroup(jPanel9Layout.createSequentialGroup()
                             .addComponent(sum)
                             .addGap(18, 18, 18)
-                            .addComponent(tongtien, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tongtien, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(file)))
                     .addComponent(jLabel4))

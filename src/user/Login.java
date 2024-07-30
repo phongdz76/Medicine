@@ -187,10 +187,10 @@ myconnection con = new myconnection();
         ResultSet rs = ps.executeQuery();
         
         if (rs.next()) {
-          
+           String ten2 = rs.getString("user");
             JOptionPane.showMessageDialog(this, "Đăng nhập thành công!");
             this.dispose(); // Đóng MainFrame hiện tại
-            UserDashboard productFrame2 = new UserDashboard();
+            UserDashboard productFrame2 = new UserDashboard(ten2);
             productFrame2.setVisible(true); // Mở ProductFrame
         } else {
             JOptionPane.showMessageDialog(this, "Tên đăng nhập hoặc mật khẩu không đúng!");

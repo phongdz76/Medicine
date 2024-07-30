@@ -381,7 +381,7 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="sum" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="tongtien" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="tongtien" min="-2" pref="176" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="file" min="-2" max="-2" attributes="0"/>
                               </Group>

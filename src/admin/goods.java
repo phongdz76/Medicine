@@ -101,7 +101,8 @@ myconnection con = new myconnection();
             }
         });
 
-        update.setText("update");
+        update.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        update.setText("Cập nhật");
         update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateActionPerformed(evt);
@@ -131,11 +132,11 @@ myconnection con = new myconnection();
                         .addGap(49, 49, 49)
                         .addComponent(jLabel5))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(288, 288, 288)
+                        .addGap(222, 222, 222)
                         .addComponent(addgoods, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(update)))
-                .addContainerGap(200, Short.MAX_VALUE))
+                        .addGap(49, 49, 49)
+                        .addComponent(update, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(180, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,7 +162,7 @@ myconnection con = new myconnection();
                 .addGap(48, 48, 48)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addgoods)
-                    .addComponent(update))
+                    .addComponent(update, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32))
         );
 
@@ -299,10 +300,15 @@ public void edit(){
             String sl =soluong.getText();
             PreparedStatement ps = con.getconnect().prepareStatement(sql);
             ps.setString(4, ma);
-            ps.setString(1, ten);
-            ps.setString(2, loai1);
-            ps.setString(3, sl);
+            ps.setString(2, ten);
+            ps.setString(3, loai1);
+            ps.setString(1, sl);
             ps.executeUpdate();
+            String updateProductSql = "UPDATE thuoc SET trangthai = CASE WHEN (SELECT soluong FROM kho WHERE idthuoc = ?) > 0 THEN 'còn' ELSE 'hết hàng' END WHERE tenthuoc = ?";
+            PreparedStatement updateProductPs = con.getconnect().prepareStatement(updateProductSql);
+            updateProductPs.setString(1, ten);
+           updateProductPs.setString(2, ten);
+              updateProductPs.executeUpdate();
             JOptionPane.showMessageDialog(this, "kho updated successfully");
       
             this.dispose();

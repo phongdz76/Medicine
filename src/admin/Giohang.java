@@ -541,28 +541,61 @@ public void Product(){
     return String.format("%03d", number); // Chuyển số thành chuỗi 3 ký tự, thêm số 0 vào trước nếu cần
     }
     private void xacnhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xacnhanActionPerformed
-        try{
-            
-            String id =generateId();
-            LocalDate curent = LocalDate.now();
-            String name=null;
-            String date1=curent.toString();
-            int tien1=this.gia1;
-            String idthuoc=this.ten;
-            String sl =soluongthuoc.getText();
-            String sql="insert into cart values(?,?,?,?,?,?)";
-            PreparedStatement ps = con.getconnect().prepareStatement(sql);
-            ps.setString(1,id);
-            ps.setString(2,date1);
-            ps.setString(3,idthuoc);
-            ps.setString(4,sl);
-            ps.setString(5,name);
-            ps.setInt(6,tien1);
-            ps.executeUpdate();
-            Product();
-        }catch(Exception ex){
-            ex.printStackTrace();
+       PreparedStatement ps = null;
+    PreparedStatement psUpdateProduct = null;
+    PreparedStatement psCheckQuantity = null;
+    PreparedStatement psUpdateStatus = null;
+    ResultSet rs = null;
+
+    try { // Start transaction
+
+        String id = generateId();
+        LocalDate current = LocalDate.now();
+        String name = null;
+        String date1 = current.toString();
+        int tien1 = this.gia1;
+        String idthuoc = this.ten;
+        String sl = soluongthuoc.getText();
+
+        // Validate input
+        if (sl.isEmpty() || !sl.matches("\\d+")) {
+            throw new IllegalArgumentException("Invalid quantity input");
         }
+
+        // Insert into cart
+        String sql = "INSERT INTO cart VALUES (?, ?, ?, ?, ?, ?)";
+        ps = con.getconnect().prepareStatement(sql);
+        ps.setString(1, id);
+        ps.setString(2, date1);
+        ps.setString(3, idthuoc);
+        ps.setString(4, sl);
+        ps.setString(5, name);
+        ps.setInt(6, tien1);
+        ps.executeUpdate();
+
+        // Update product quantity
+        String queryUpdateProduct = "UPDATE kho SET soluong = soluong - ? WHERE idthuoc = ?";
+        psUpdateProduct = con.getconnect().prepareStatement(queryUpdateProduct);
+        psUpdateProduct.setString(1, sl);
+        psUpdateProduct.setString(2, idthuoc);
+        int rowsAffected = psUpdateProduct.executeUpdate();
+
+        // Check if product is out of stock
+        String checkQuantity = "SELECT soluong FROM kho WHERE idthuoc = ?";
+        psCheckQuantity = con.getconnect().prepareStatement(checkQuantity);
+        psCheckQuantity.setString(1, idthuoc);
+        rs = psCheckQuantity.executeQuery();
+
+        if (rs.next() && rs.getInt("soluong") == 0) {
+            String updateStatus = "UPDATE thuoc SET trangthai = 'hết hàng' WHERE tenthuoc = ?";
+            psUpdateStatus = con.getconnect().prepareStatement(updateStatus);
+            psUpdateStatus.setString(1, idthuoc);
+            psUpdateStatus.executeUpdate();
+        }
+        Product();  // Assuming this method refreshes the product display
+    }catch(Exception E){
+        E.printStackTrace();
+    }
     }//GEN-LAST:event_xacnhanActionPerformed
 
     private void sumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sumActionPerformed

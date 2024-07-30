@@ -55,7 +55,7 @@ myconnection con = new myconnection();
         searchkho = new javax.swing.JButton();
         deletekho = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        datakho = new javax.swing.JTable();
+        datakho123 = new javax.swing.JTable();
         jLabel10 = new javax.swing.JLabel();
         addkho = new javax.swing.JButton();
         editkho = new javax.swing.JButton();
@@ -117,7 +117,7 @@ myconnection con = new myconnection();
             }
         });
 
-        datakho.setModel(new javax.swing.table.DefaultTableModel(
+        datakho123.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -128,7 +128,7 @@ myconnection con = new myconnection();
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(datakho);
+        jScrollPane2.setViewportView(datakho123);
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
@@ -430,14 +430,14 @@ myconnection con = new myconnection();
     private void editkhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editkhoActionPerformed
                                              
         ResultSet rs = null;
-        String sql = "select * FROM kho WHERE masanpham = ?";
+        String sql = "select * FROM kho WHERE idk = ?";
         try {
-            int selectedRow = datakho.getSelectedRow();
+            int selectedRow = datakho123.getSelectedRow();
             if (selectedRow == -1) {
                 JOptionPane.showMessageDialog(this, "Vui lòng chọn thuoc để mua");
                 return;
             }
-            String goods = (datakho.getModel().getValueAt(selectedRow, 0).toString());
+            String goods = (datakho123.getModel().getValueAt(selectedRow, 0).toString());
             PreparedStatement ps = con.getconnect().prepareStatement(sql);
             ps.setString(1, goods);
             rs = ps.executeQuery();
@@ -447,6 +447,7 @@ myconnection con = new myconnection();
                 goods ha = new goods(ten);
                 ha.setVisible(true);
             }
+            
            
         } catch(Exception e) {
             e.printStackTrace();
@@ -461,14 +462,14 @@ myconnection con = new myconnection();
 
     private void deletekhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletekhoActionPerformed
         ResultSet rs = null;
-        String sql = "delete  FROM kho WHERE idk = ?";
+        String sql = "delete  FROM kho WHERE idk= ?";
         try {
-            int selectedRow = datakho.getSelectedRow();
+            int selectedRow = datakho123.getSelectedRow();
             if (selectedRow == -1) {
                 JOptionPane.showMessageDialog(this, "Vui lòng chọn một sản phẩm để xóa");
                 return;
             }
-            String goods = (datakho.getModel().getValueAt(selectedRow, 0).toString());
+            String goods = (datakho123.getModel().getValueAt(selectedRow, 0).toString());
             PreparedStatement ps = con.getconnect().prepareStatement(sql);
             ps.setString(1, goods);
             ps.executeUpdate();
@@ -550,14 +551,15 @@ myconnection con = new myconnection();
 public void Product(){
     ResultSet rs =null;
     try{
-        String sql ="select idthuoc,loai,soluong from kho";
+        String sql ="select * from kho";
         PreparedStatement ps = con.getconnect().prepareStatement(sql);
         rs = ps.executeQuery();
-        datakho.setModel(DbUtils.resultSetToTableModel(rs));
-        datakho.getColumnModel().getColumn(0).setPreferredWidth(500);
-        datakho.getColumnModel().getColumn(1).setPreferredWidth(500);
-        datakho.getColumnModel().getColumn(2).setPreferredWidth(500);
-      
+        datakho123.setModel(DbUtils.resultSetToTableModel(rs));
+        datakho123.getColumnModel().getColumn(0).setPreferredWidth(500);
+        datakho123.getColumnModel().getColumn(1).setPreferredWidth(500);
+        datakho123.getColumnModel().getColumn(2).setPreferredWidth(500);
+       datakho123.getColumnModel().getColumn(3).setPreferredWidth(500);
+        datakho123.getColumnModel().getColumn(4).setPreferredWidth(500);
         
     }catch(Exception e){
         e.printStackTrace();
@@ -565,7 +567,7 @@ public void Product(){
 }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addkho;
-    private javax.swing.JTable datakho;
+    private javax.swing.JTable datakho123;
     private javax.swing.JButton deletekho;
     private javax.swing.JButton editkho;
     private javax.swing.JLabel jLabel1;

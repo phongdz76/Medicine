@@ -34,15 +34,19 @@ public class Giohang2 extends javax.swing.JFrame {
 myconnection con = new myconnection();
     private String ten;
     private int gia1;
+    private String ten2;
     /**
      * Creates new form 
      */
- public Giohang2(String ten,int gia1) {
+ public Giohang2(String ten,int gia1,String ten2) {
+     this.ten2=ten2;
      this.ten=ten;
      this.gia1=gia1;
+    
         initComponents();
         updateUI();
          Product();
+          tenuser1.setText(ten2);
     }
     public Giohang2() {
         initComponents();
@@ -85,6 +89,7 @@ myconnection con = new myconnection();
         jLabel4 = new javax.swing.JLabel();
         sum = new javax.swing.JButton();
         tongtien = new javax.swing.JLabel();
+        tenuser1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -294,7 +299,7 @@ myconnection con = new myconnection();
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(sum)
                         .addGap(18, 18, 18)
-                        .addComponent(tongtien, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tongtien, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(xacnhan))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 730, Short.MAX_VALUE)
@@ -331,13 +336,15 @@ myconnection con = new myconnection();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(xacnhan)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(sum, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(tongtien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(tongtien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(xacnhan))
                 .addContainerGap())
         );
+
+        tenuser1.setText("jLabel5");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -349,9 +356,11 @@ myconnection con = new myconnection();
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 315, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 239, Short.MAX_VALUE)
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
+                        .addComponent(tenuser1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tenuser)
                         .addGap(141, 141, 141)
                         .addComponent(jLabel8)
@@ -367,7 +376,8 @@ myconnection con = new myconnection();
                     .addComponent(jLabel6)
                     .addComponent(jLabel8)
                     .addComponent(jLabel3)
-                    .addComponent(tenuser))
+                    .addComponent(tenuser)
+                    .addComponent(tenuser1))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -430,7 +440,7 @@ myconnection con = new myconnection();
 
         String id = generateId();
         LocalDate current = LocalDate.now();
-        String name = null;
+        String name = this.ten2;
         String date1 = current.toString();
         int tien1 = this.gia1;
         String idthuoc = this.ten;
@@ -460,12 +470,12 @@ myconnection con = new myconnection();
         int rowsAffected = psUpdateProduct.executeUpdate();
 
         // Check if product is out of stock
-        String checkQuantity = "SELECT soluongsp FROM kho WHERE idthuoc = ?";
+        String checkQuantity = "SELECT soluong FROM kho WHERE idthuoc = ?";
         psCheckQuantity = con.getconnect().prepareStatement(checkQuantity);
         psCheckQuantity.setString(1, idthuoc);
         rs = psCheckQuantity.executeQuery();
 
-        if (rs.next() && rs.getInt("soluongsp") == 0) {
+        if (rs.next() && rs.getInt("soluong") == 0) {
             String updateStatus = "UPDATE thuoc SET trangthai = 'hết hàng' WHERE tenthuoc = ?";
             psUpdateStatus = con.getconnect().prepareStatement(updateStatus);
             psUpdateStatus.setString(1, idthuoc);
@@ -495,7 +505,7 @@ public void Product(){
 }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.dispose();
-        UserDashboard my = new UserDashboard();
+        UserDashboard my = new UserDashboard(ten2);
         my.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -635,6 +645,7 @@ public void Product(){
     private javax.swing.JButton sum;
     private javax.swing.JTextField ten1;
     private javax.swing.JLabel tenuser;
+    private javax.swing.JLabel tenuser1;
     private javax.swing.JLabel tongtien;
     private javax.swing.JButton xacnhan;
     // End of variables declaration//GEN-END:variables
