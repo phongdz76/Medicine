@@ -59,17 +59,19 @@ myconnection con = new myconnection();
         jLabel10 = new javax.swing.JLabel();
         addkho = new javax.swing.JButton();
         editkho = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         qlt = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         qlk = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         vh = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         qltk = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
+        qldt = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -143,7 +145,7 @@ myconnection con = new myconnection();
 
         editkho.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         editkho.setForeground(new java.awt.Color(0, 0, 0));
-        editkho.setText("Chỉnh sửa hàng hóa");
+        editkho.setText("Nhập hàng hóa");
         editkho.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editkhoActionPerformed(evt);
@@ -157,7 +159,7 @@ myconnection con = new myconnection();
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(4, 4, 4)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,8 +193,13 @@ myconnection con = new myconnection();
                     .addComponent(addkho))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/herbal (1).png"))); // NOI18N
+        jLabel1.setText("Medicine Flare");
 
         jPanel4.setBackground(new java.awt.Color(217, 217, 217));
 
@@ -232,28 +239,18 @@ myconnection con = new myconnection();
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/herbal (1).png"))); // NOI18N
-        jLabel1.setText("Medicine Flare");
-
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(54, 54, 54)
                 .addComponent(qlk, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(qlk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(qlk, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
         jPanel6.setBackground(new java.awt.Color(217, 217, 217));
@@ -296,10 +293,10 @@ myconnection con = new myconnection();
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(qltk)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(35, 35, 35))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -308,15 +305,45 @@ myconnection con = new myconnection();
 
         jPanel8.setBackground(new java.awt.Color(217, 217, 217));
 
+        jPanel9.setBackground(new java.awt.Color(217, 217, 217));
+
+        qldt.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        qldt.setForeground(new java.awt.Color(0, 0, 0));
+        qldt.setText("Quản lý doanh thu");
+        qldt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                qldtMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap(29, Short.MAX_VALUE)
+                .addComponent(qldt)
+                .addGap(26, 26, 26))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(qldt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addGap(0, 15, Short.MAX_VALUE)
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -341,7 +368,7 @@ myconnection con = new myconnection();
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(224, Short.MAX_VALUE))
+                .addContainerGap(202, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -349,27 +376,32 @@ myconnection con = new myconnection();
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(417, 417, 417)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(377, 377, 377)
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
+                        .addGap(195, 195, 195)))
                 .addComponent(jLabel2)
-                .addGap(54, 54, 54))
+                .addGap(52, 52, 52))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel11))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -395,6 +427,62 @@ myconnection con = new myconnection();
         login.setVisible(true);
     }//GEN-LAST:event_jLabel2MouseClicked
 
+    private void editkhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editkhoActionPerformed
+                                             
+        ResultSet rs = null;
+        String sql = "select * FROM kho WHERE masanpham = ?";
+        try {
+            int selectedRow = datakho.getSelectedRow();
+            if (selectedRow == -1) {
+                JOptionPane.showMessageDialog(this, "Vui lòng chọn thuoc để mua");
+                return;
+            }
+            String goods = (datakho.getModel().getValueAt(selectedRow, 0).toString());
+            PreparedStatement ps = con.getconnect().prepareStatement(sql);
+            ps.setString(1, goods);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                String ten = rs.getString("idthuoc");
+                this.dispose();
+                goods ha = new goods(ten);
+                ha.setVisible(true);
+            }
+           
+        } catch(Exception e) {
+            e.printStackTrace();
+        }// TODO add y // TODO add your handling code here:
+    }//GEN-LAST:event_editkhoActionPerformed
+
+    private void addkhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addkhoActionPerformed
+        this.dispose();
+        goods goods = new goods();
+        goods.setVisible(true);
+    }//GEN-LAST:event_addkhoActionPerformed
+
+    private void deletekhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletekhoActionPerformed
+        ResultSet rs = null;
+        String sql = "delete  FROM kho WHERE idk = ?";
+        try {
+            int selectedRow = datakho.getSelectedRow();
+            if (selectedRow == -1) {
+                JOptionPane.showMessageDialog(this, "Vui lòng chọn một sản phẩm để xóa");
+                return;
+            }
+            String goods = (datakho.getModel().getValueAt(selectedRow, 0).toString());
+            PreparedStatement ps = con.getconnect().prepareStatement(sql);
+            ps.setString(1, goods);
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Xóa thành công");
+            Product();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }// TODO add y
+    }//GEN-LAST:event_deletekhoActionPerformed
+
+    private void searchkhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchkhoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchkhoActionPerformed
+
     private void qltMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_qltMouseClicked
         this.dispose();
         admin admin = new admin();
@@ -419,39 +507,11 @@ myconnection con = new myconnection();
         admin.setVisible(true);
     }//GEN-LAST:event_qltkMouseClicked
 
-    private void addkhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addkhoActionPerformed
-      this.dispose();
-            goods goods = new goods();
-            goods.setVisible(true);
-    }//GEN-LAST:event_addkhoActionPerformed
-
-    private void editkhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editkhoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_editkhoActionPerformed
-
-    private void deletekhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletekhoActionPerformed
-        ResultSet rs = null;
-    String sql = "delete  FROM goods WHERE makho = ?";
-    try {
-         int selectedRow = datakho.getSelectedRow();
-        if (selectedRow == -1) {
-            JOptionPane.showMessageDialog(this, "Vui lòng chọn một sản phẩm để xóa");
-            return;
-        }
-        String goods = (datakho.getModel().getValueAt(selectedRow, 0).toString());
-        PreparedStatement ps = con.getconnect().prepareStatement(sql);
-        ps.setString(1, goods);
-        ps.executeUpdate();
-        JOptionPane.showMessageDialog(this, "Xóa thành công");
-        Product();
-    } catch(Exception e) {
-        e.printStackTrace();
-    }// TODO add y
-    }//GEN-LAST:event_deletekhoActionPerformed
-
-    private void searchkhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchkhoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_searchkhoActionPerformed
+    private void qldtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_qldtMouseClicked
+        this.dispose();
+        doanhthu admin = new doanhthu();
+        admin.setVisible(true);
+    }//GEN-LAST:event_qldtMouseClicked
 
     /**
      * @param args the command line arguments
@@ -490,14 +550,13 @@ myconnection con = new myconnection();
 public void Product(){
     ResultSet rs =null;
     try{
-        String sql ="select * from kho";
+        String sql ="select idthuoc,loai,soluong from kho";
         PreparedStatement ps = con.getconnect().prepareStatement(sql);
         rs = ps.executeQuery();
         datakho.setModel(DbUtils.resultSetToTableModel(rs));
         datakho.getColumnModel().getColumn(0).setPreferredWidth(500);
         datakho.getColumnModel().getColumn(1).setPreferredWidth(500);
         datakho.getColumnModel().getColumn(2).setPreferredWidth(500);
-        datakho.getColumnModel().getColumn(3).setPreferredWidth(500);
       
         
     }catch(Exception e){
@@ -522,8 +581,10 @@ public void Product(){
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel qldt;
     private javax.swing.JLabel qlk;
     private javax.swing.JLabel qlt;
     private javax.swing.JLabel qltk;

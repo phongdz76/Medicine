@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
+import user.Giohang2;
 import user.Login;
 
 /**
@@ -45,7 +46,7 @@ public class admin extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         data = new javax.swing.JTable();
         jLabel11 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        giohangadmin = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -59,6 +60,8 @@ public class admin extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         qltk = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
+        qldt = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -135,9 +138,14 @@ public class admin extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Quản lý thuốc");
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jButton2.setText("Thêm vào giỏ hàng");
+        giohangadmin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        giohangadmin.setForeground(new java.awt.Color(0, 0, 0));
+        giohangadmin.setText("Thêm vào giỏ hàng");
+        giohangadmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                giohangadminActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -160,7 +168,7 @@ public class admin extends javax.swing.JFrame {
                                 .addComponent(textfind, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(find))
-                            .addComponent(jButton2))
+                            .addComponent(giohangadmin))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -181,7 +189,7 @@ public class admin extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
-                .addComponent(jButton2)
+                .addComponent(giohangadmin)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -296,10 +304,10 @@ public class admin extends javax.swing.JFrame {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(qltk)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(35, 35, 35))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -308,15 +316,50 @@ public class admin extends javax.swing.JFrame {
 
         jPanel8.setBackground(new java.awt.Color(217, 217, 217));
 
+        jPanel9.setBackground(new java.awt.Color(217, 217, 217));
+
+        qldt.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        qldt.setForeground(new java.awt.Color(0, 0, 0));
+        qldt.setText("Quản lý doanh thu");
+        qldt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                qldtMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap(29, Short.MAX_VALUE)
+                .addComponent(qldt)
+                .addGap(26, 26, 26))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(qldt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 194, Short.MAX_VALUE)
+            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel8Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
+            .addGap(0, 52, Short.MAX_VALUE)
+            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel8Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -341,7 +384,7 @@ public class admin extends javax.swing.JFrame {
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(214, Short.MAX_VALUE))
+                .addContainerGap(202, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -394,23 +437,23 @@ public class admin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
-         try{
-            String max1 = textfind.getText();
-          
-            if (max1.isEmpty()) {
-            // No row selected
-            JOptionPane.showMessageDialog(this, "Vui lòng điền mã sản phẩm.");
-            return;
-          }
-            String sql="delete from thuoc where mathuoc=?";
+          ResultSet rs = null;
+        String sql = "delete  FROM thuoc WHERE masanpham= ?";
+        try {
+            int selectedRow = data.getSelectedRow();
+            if (selectedRow == -1) {
+                JOptionPane.showMessageDialog(this, "Vui lòng chọn một sản phẩm để xóa");
+                return;
+            }
+            String goods = (data.getModel().getValueAt(selectedRow, 0).toString());
             PreparedStatement ps = con.getconnect().prepareStatement(sql);
-            ps.setString(1, max1);
+            ps.setString(1, goods);
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(this, "yes");
+            JOptionPane.showMessageDialog(this, "Xóa thành công");
             Product();
-        }catch(Exception e){
+        } catch(Exception e) {
             e.printStackTrace();
-        }
+        }// TODO add y
     }//GEN-LAST:event_deleteActionPerformed
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
@@ -421,9 +464,15 @@ public class admin extends javax.swing.JFrame {
 
     private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
         String sql="Select * from thuoc where masanpham=? ";
-        String find1 = textfind.getText();
+    ;
         ResultSet rs=null;
         try{
+            int selectedRow = data.getSelectedRow();
+            if (selectedRow == -1) {
+                JOptionPane.showMessageDialog(this, "Vui lòng chọn một sản phẩm để sửa");
+                return;
+            }
+          String find1 = (data.getModel().getValueAt(selectedRow, 0).toString());
           PreparedStatement ps = con.getconnect().prepareStatement(sql);
           ps.setString(1, find1);
           rs = ps.executeQuery();
@@ -493,6 +542,38 @@ public class admin extends javax.swing.JFrame {
         admin.setVisible(true);
     }//GEN-LAST:event_qltkMouseClicked
 
+    private void qldtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_qldtMouseClicked
+        this.dispose();
+        doanhthu admin = new doanhthu();
+        admin.setVisible(true);
+    }//GEN-LAST:event_qldtMouseClicked
+
+    private void giohangadminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_giohangadminActionPerformed
+        ResultSet rs = null;
+        String sql = "select tenthuoc,gia FROM thuoc WHERE masanpham = ?";
+        try {
+            int selectedRow = data.getSelectedRow();
+            if (selectedRow == -1) {
+                JOptionPane.showMessageDialog(this, "Vui lòng chọn thuoc để mua");
+                return;
+            }
+            String goods = (data.getModel().getValueAt(selectedRow, 0).toString());
+            PreparedStatement ps = con.getconnect().prepareStatement(sql);
+            ps.setString(1, goods);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                String ten = rs.getString("tenthuoc");
+                int gia1=rs.getInt("gia");
+                this.dispose();
+                Giohang ha = new Giohang(ten,gia1);
+                ha.setVisible(true);
+            }
+           
+        } catch(Exception e) {
+            e.printStackTrace();
+        }// TODO add y // TODO add your handling code here:
+    }//GEN-LAST:event_giohangadminActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -553,7 +634,7 @@ public class admin extends javax.swing.JFrame {
     private javax.swing.JButton delete;
     private javax.swing.JButton edit;
     private javax.swing.JButton find;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton giohangadmin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
@@ -567,7 +648,9 @@ public class admin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel qldt;
     private javax.swing.JLabel qlk;
     private javax.swing.JLabel qlt;
     private javax.swing.JLabel qltk;

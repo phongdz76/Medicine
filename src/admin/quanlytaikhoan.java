@@ -50,6 +50,8 @@ myconnection con = new myconnection();
         jPanel7 = new javax.swing.JPanel();
         qltk = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
+        qldt = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -191,15 +193,45 @@ myconnection con = new myconnection();
 
         jPanel8.setBackground(new java.awt.Color(217, 217, 217));
 
+        jPanel10.setBackground(new java.awt.Color(217, 217, 217));
+
+        qldt.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        qldt.setForeground(new java.awt.Color(0, 0, 0));
+        qldt.setText("Quản lý doanh thu");
+        qldt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                qldtMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addContainerGap(29, Short.MAX_VALUE)
+                .addComponent(qldt)
+                .addGap(26, 26, 26))
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(qldt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 194, Short.MAX_VALUE)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addGap(0, 12, Short.MAX_VALUE)
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -224,7 +256,7 @@ myconnection con = new myconnection();
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(239, Short.MAX_VALUE))
+                .addContainerGap(227, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -396,7 +428,6 @@ myconnection con = new myconnection();
         this.dispose();
         Giohang admin = new Giohang();
         admin.setVisible(true);
-
     }//GEN-LAST:event_vhMouseClicked
 
     private void qlkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_qlkMouseClicked
@@ -410,6 +441,12 @@ myconnection con = new myconnection();
         admin admin = new admin();
         admin.setVisible(true);
     }//GEN-LAST:event_qltMouseClicked
+
+    private void qldtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_qldtMouseClicked
+        this.dispose();
+        doanhthu admin = new doanhthu();
+        admin.setVisible(true);
+    }//GEN-LAST:event_qldtMouseClicked
  public void Product(){
     ResultSet rs =null;
     try{
@@ -474,6 +511,7 @@ myconnection con = new myconnection();
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -482,6 +520,7 @@ myconnection con = new myconnection();
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel qldt;
     private javax.swing.JLabel qlk;
     private javax.swing.JLabel qlt;
     private javax.swing.JLabel qltk;
