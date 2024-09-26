@@ -145,7 +145,7 @@ myconnection con = new myconnection();
 
         editkho.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         editkho.setForeground(new java.awt.Color(0, 0, 0));
-        editkho.setText("Nhập hàng hóa");
+        editkho.setText("Chỉnh sửa hàng hóa");
         editkho.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editkhoActionPerformed(evt);

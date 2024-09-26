@@ -277,7 +277,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Nh&#x1ead;p h&#xe0;ng h&#xf3;a"/>
+                <Property name="text" type="java.lang.String" value="Ch&#x1ec9;nh s&#x1eed;a h&#xe0;ng h&#xf3;a"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editkhoActionPerformed"/>
